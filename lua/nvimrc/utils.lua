@@ -17,3 +17,4 @@ if M.is_windows == true then
   M.path_separator = "\\"
 end
 
+return M
