@@ -30,8 +30,6 @@ function M.setup(config)
 	local code = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait().code
 	if code == 0 then
 		local git_root = strip(vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait().stdout)
-    print("root: "..git_root)
-		print("path: " .. git_root .. utils.path_separator .. vim_file .. "bruh")
 		source_if_exists(git_root .. utils.path_separator .. vim_file)
 		luafile_if_exists(git_root .. utils.path_separator .. lua_file)
 	else
