@@ -1,4 +1,4 @@
-local utils = require("012e/nvimrc/utils")
+local utils = require("nvimrc/utils")
 
 local M = {}
 
