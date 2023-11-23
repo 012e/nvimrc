@@ -25,7 +25,7 @@ function M.setup(config)
 	-- Get exit status of git command
 	vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
 	if vim.v.shell_error == 0 then
-		local git_root = vim.fn.system({ "git", "rev-parse", "--show-toplevel" })
+		local git_root = vim.system({ "git", "rev-parse", "--show-toplevel" }):wait().stdout
 		print("git")
 		source_if_exists(git_root .. utils.path_separator .. vim_file)
 		luafile_if_exists(git_root .. utils.path_separator .. lua_file)
