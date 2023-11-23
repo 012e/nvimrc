@@ -27,6 +27,7 @@ end
 
 function M.setup(config)
 	config = config or { pattern = ".nvimrc" }
+	config.pattern = config.pattern or ".nvimrc"
 	local lua_file = config.pattern .. ".lua"
 	local vim_file = config.pattern
 
