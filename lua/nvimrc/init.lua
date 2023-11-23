@@ -25,7 +25,7 @@ function M.setup(config)
 	-- Get exit code of git command
 	local code = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait().code
 	if code == 0 then
-		local git_root = vim.system({ "git", "rev-parse", "--show-toplevel" }, {text = true}):wait().stdout
+		local git_root = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait().stderr
 		print("path: " .. git_root .. utils.path_separator .. vim_file)
 		source_if_exists(git_root .. utils.path_separator .. vim_file)
 		luafile_if_exists(git_root .. utils.path_separator .. lua_file)
