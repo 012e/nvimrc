@@ -16,6 +16,10 @@ local function luafile_if_exists(name)
 	end
 end
 
+local function strip(s)
+  return s:gsub("^%s*(.-)%s*$", "%1")
+end
+
 function M.setup(config)
 	config = config or { pattern = ".nvimrc" }
 	config.pattern = config.pattern or ".nvimrc"
@@ -25,7 +29,7 @@ function M.setup(config)
 	-- Get exit code of git command
 	local code = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait().code
 	if code == 0 then
-		local git_root = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait().stdout
+		local git_root = strip(vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait().stdout)
     print("root: "..git_root)
 		print("path: " .. git_root .. utils.path_separator .. vim_file .. "bruh")
 		source_if_exists(git_root .. utils.path_separator .. vim_file)
