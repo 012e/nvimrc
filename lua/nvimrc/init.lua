@@ -5,14 +5,14 @@ local M = {}
 local function source_if_exists(name)
   if utils.exists(name) then
     vim.cmd("source " .. name)
-    vim.notify("source " .. name, vim.log.levels.DEBUG)
+    vim.notify("source " .. name, vim.log.levels.TRACE)
   end
 end
 
 local function luafile_if_exists(name)
   if utils.exists(name) then
     vim.cmd("luafile " .. name)
-    vim.notify("luafile " .. name, vim.log.levels.DEBUG)
+    vim.notify("luafile " .. name, vim.log.levels.TRACE)
   end
 end
 
